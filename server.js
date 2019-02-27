@@ -1,5 +1,6 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
+const logger = require("morgan");
 var path = require("path");
 var app = express();
 // var connection = require("./config/connection");
@@ -8,17 +9,17 @@ var app = express();
 // process.env.PORT lets the port be set by Heroku
 var PORT = process.env.PORT || 7000;
 
+app.use(logger("dev"));
+
+
+app.use(express.static("public"));
+
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-//delete probably
-// require("./config/connection")(app);
-// require("./config/orm")(app);
 
 //use
 var routes = require("./controllers/burgers_controller");

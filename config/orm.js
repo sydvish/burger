@@ -53,11 +53,11 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, [table, cols, vals], function (err, result) {
+        const query = connection.query(queryString, [table, cols, vals], function (err, result) {
             if (err) {
                 throw err;
             }
-
+            console.log(query.sql);
             cb(result);
         });
     },
@@ -75,8 +75,15 @@ var orm = {
             cb(result);
         });
     },
+
+    deleteOne: function(table, condition, cb){
+        const queryString = "DELETE FROM ?? WHERE ?";
+        connection.query(queryString, [table, condition], function(err, data){
+            cb(data);
+        });
+    }
    
 };
 
-// Export the orm object for the model (cat.js).
+
 module.exports = orm;

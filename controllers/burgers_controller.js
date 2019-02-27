@@ -19,13 +19,14 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
+    console.log(req.body)
   burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/burger/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
   const devoured = { devoured: req.body.devoured ? 0 : 1}
 
   burger.updateOne(devoured, { id: req.params.id }, function(result) {
@@ -36,6 +37,12 @@ router.put("/api/burger/:id", function(req, res) {
       res.status(200).end();
     }
   });
+});
+
+router.delete("/api/burgers/:id", function(req, res){
+    burger.deleteOne({id: req.params.id}, function(burger){
+        res.send(true);
+    });
 });
 
 // Export routes for server.js to use.

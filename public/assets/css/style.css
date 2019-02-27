@@ -4,11 +4,10 @@ body {
 
 .jumbotron {
   text-align: center;
-  background-image: url("../img/burgerpic2.png");
   background-repeat: no-repeat;
   background-position: right;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ece5e5;
+  color: black;
   margin-top: 3%;
 }
 

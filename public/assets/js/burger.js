@@ -4,7 +4,7 @@ $(function () {
     event.preventDefault();
 
     var newBurger = {
-      burger_name: $("#addburger")
+      burger_name: $("#addBurger")
         .val()
         .trim(),
       devoured: 0
@@ -19,22 +19,34 @@ $(function () {
     });
   });
 
-  // $(".eatburger").on("click", function (event) {
-  //   event.preventDefault();
+  $(".eatbutton").on("click", function (event) {
+    // event.preventDefault();
+    console.log("text");
 
-  //   var id = $(this).data("id");
-  //   var devouredState = {
-  //     devoured: 1
-  //   };
+    var id = $(this).data("id");
+    var newDevouredState = $(this).data("newDevoured");
 
-  //   $.ajax("/api/burgers/" + id, {
-  //     type: "PUT",
-  //     data: devouredState
-  //   }).then(function () {
-  //     console.log("Burger devoured");
-  //     location.reload();
-  //   });
-  // });
+    var devouredState = {
+      devoured: newDevouredState
+    };
+
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: devouredState
+    }).then(function () {
+      console.log("Burger devoured");
+      location.reload();
+    });
+  });
+  $(".delete").on("click", function(event){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      url: "/api/burgers/"+ id,
+      method: "DELETE"
+    }).then(function(data){
+      location.reload();
+    });
+  });
 
 
 });
