@@ -1,7 +1,8 @@
 # burger
 
-#Eat-Da-Burger! 
-A burger logger with using MySQL, Node, Express, Handlebars and a homemade ORM.
+Eat-Da-Burger! 
+
+This assignment is a burger logger with using MySQL, Node, Express, Handlebars and a homemade ORM.
 
 This is a restaurant app that lets users input the names of burgers they'd like to eat.
 
@@ -11,4 +12,4 @@ Each burger in the waiting area also has a Devour it! button. When the user clic
 
 Your app will store every burger in a database, whether devoured or not.
 
-Check out a demo of [Eat-Da-Burger](https://sydthesquid.herokuapp.com/)
+Check out a demo of Eat-Da-Burger [here](https://sydthesquid.herokuapp.com/)
